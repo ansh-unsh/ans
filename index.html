@@ -1,133 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ansh Bhardwaj – Resume</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ansh Bhardwaj — Cybersecurity Resume</title>
+  <meta name="description" content="One-page dynamic-looking static resume for Ansh Bhardwaj — optimized for HR and Technical Managers." />
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f9f9fb;
-      color: #222;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#6ee7b7; --accent-2:#60a5fa; --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --glass-border: rgba(255,255,255,0.06);
+      font-family: Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
     }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071123 0%, #071727 60%);color:#e6eef6}
+    .container{max-width:980px;margin:36px auto;padding:28px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 30px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.03);}
+    header{display:flex;gap:20px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#042029;font-size:26px}
+    h1{margin:0;font-size:22px;letter-spacing:0.6px}
+    .sub{color:var(--muted);font-size:13px;margin-top:6px}
+    .actions{margin-left:auto;display:flex;gap:10px}
+    .btn{background:var(--glass);border:1px solid var(--glass-border);color:var(--accent);padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer}
+    .btn.alt{background:transparent;color:var(--accent-2);border:1px solid rgba(96,165,250,0.14)}
 
-    .container {
-      max-width: 850px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.08);
-    }
+    main{display:grid;grid-template-columns:1fr 360px;gap:22px;margin-top:22px}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid var(--glass-border)}
 
-    h1 {
-      margin-bottom: 5px;
-      font-size: 2em;
-      color: #222;
-    }
+    /* left content */
+    .hero-title{display:flex;align-items:center;gap:10px}
+    .headline{font-size:16px;color:#bfeadf;font-weight:700}
+    .summary{color:var(--muted);margin-top:10px;line-height:1.5}
 
-    h2 {
-      border-bottom: 2px solid #0078ff;
-      padding-bottom: 5px;
-      margin-top: 30px;
-      color: #0078ff;
-    }
+    .section{margin-top:16px}
+    .section h3{margin:0;font-size:13px;color:#cfe8f0}
 
-    p {
-      margin: 5px 0;
-    }
+    .skills-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .skill-pill{background:var(--glass-2);padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted);border:1px solid rgba(255,255,255,0.02)}
 
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+    .timeline{margin-top:12px;border-left:2px solid rgba(255,255,255,0.03);padding-left:16px}
+    .job{position:relative;padding:12px 0}
+    .job::before{content:"";position:absolute;left:-10px;top:16px;width:10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 0 4px rgba(96,165,250,0.5);}
+    .job-title{display:flex;justify-content:space-between;align-items:center}
+    .job-title strong{font-size:14px}
+    .muted{color:var(--muted);font-size:13px}
+    ul.bullets{margin:8px 0 0 18px;padding:0;color:var(--muted);line-height:1.45;list-style:none}
+ul.bullets li{position:relative;padding-left:18px;margin-bottom:6px}
+ul.bullets li::before{content:"";position:absolute;left:0;top:6px;width:10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 0 6px rgba(110,231,183,0.6)}
 
-    .header p {
-      color: #555;
-    }
+    /* right column */
+    .metrics{display:flex;gap:10px;flex-wrap:wrap}
+    .metric{flex:1 1 100px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:10px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.02)}
+    .metric .num{font-size:20px;color:var(--accent);font-weight:700}
+    .tech-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+    .skillbar{background:rgba(255,255,255,0.03);height:9px;border-radius:8px;overflow:hidden}
+    .skillbar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:width 1s ease}
 
-    .links a {
-      color: #0078ff;
-      text-decoration: none;
-      margin: 0 8px;
-    }
+    .cta{margin-top:14px;display:flex;gap:8px}
 
-    .links a:hover {
-      text-decoration: underline;
-    }
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
 
-    ul {
-      margin-top: 8px;
-      padding-left: 20px;
-    }
+    /* responsive */
+    @media (max-width:920px){main{grid-template-columns:1fr} .actions{display:none}}
 
-    li {
-      margin-bottom: 6px;
-    }
-
-    .skills span {
-      display: inline-block;
-      background: #eef4ff;
-      color: #0078ff;
-      padding: 5px 12px;
-      border-radius: 8px;
-      margin: 4px;
-      font-size: 0.9em;
-    }
+    /* small helpers */
+    .tag{background:rgba(96,165,250,0.08);color:var(--accent-2);padding:4px 8px;border-radius:999px;font-weight:700;font-size:12px}
+    .switch{display:inline-flex;gap:8px;align-items:center}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Ansh Bhardwaj</h1>
-      <p>Front-End Supervisor | Aspiring IT Professional | Java Developer</p>
-      <div class="links">
-        <a href="mailto:ansh@example.com">ansh@example.com</a> |
-        <a href="https://www.linkedin.com/in/ianshbhardwaj" target="_blank">LinkedIn</a> |
-        <a href="https://github.com/ianshbhardwaj" target="_blank">GitHub</a>
+  <div class="container" aria-labelledby="pageTitle">
+    <header>
+      <div class="avatar">AB</div>
+      <div>
+        <h1 id="pageTitle">Ansh Bhardwaj <span class="tag">Cybersecurity Analyst</span> <span style="margin-left:8px" class="badge">Professional Profile</span></h1>
+        <div class="sub">Toronto, ON · (437) 989-9950 · <a href="mailto:anshbhardwaj0202@gmail.com" style="color:inherit;text-decoration:underline">anshbhardwaj0202@gmail.com</a> · <a href="https://linkedin.com/in/anshcyber" target="_blank" style="color:inherit;text-decoration:underline">linkedin.com/in/anshcyber</a></div>
+        <div class="sub">Public certifications: CompTIA Security+ · Microsoft Cybersecurity Analyst · Networking & Cloud</div>
+      </div>
+      <div class="actions">
+        <a class="btn" style="text-decoration:none" href="https://drive.google.com/file/d/1aldkmaseNfRUl_RSQUwxEmVC3qHg1_K4/view?usp=sharing" target="_blank">Print / Save PDF</a>
+        <button class="btn alt" id="viewToggle">Technical View</button>
+      </div>
+    </header>
+
+    <!-- 15-Second HR Scan Strip -->
+    <div class="panel" style="margin-top:16px; display:flex; justify-content:space-between; padding:14px 18px; border-left:4px solid var(--accent); background:rgba(110,231,183,0.04);">
+      <div><strong style="color:#6ee7b7; font-size:14px;">Key Snapshot:</strong></div>
+      <div style="display:flex; gap:20px; font-size:13px; color:var(--muted);">
+        <span><strong style="color:#6ee7b7">3+ yrs</strong> SOC Experience</span>
+        <span><strong style="color:#6ee7b7">MTTD ↓ 18%</strong> optimization</span>
+        <span><strong style="color:#6ee7b7">High-volume</strong> alert triage (25+/day)</span>
+        <span><strong style="color:#6ee7b7">Security+</strong> certified</span>
+        <span><strong style="color:#6ee7b7">Azure Sentinel</strong> + Splunk</span>
       </div>
     </div>
 
-    <h2>Profile</h2>
-    <p>Motivated IT graduate with hands-on experience in leadership and technology. Skilled in Java, Spring Boot, and modern web development. Passionate about creating efficient systems and leading teams to excellence.</p>
+    <main>
+      <section class="panel" id="leftColumn">
+        <div class="hero-title">
+          <div class="headline">SOC-Driven Analyst with hands-on SIEM & IR experience</div>
+        </div>
+        <p class="summary">Performance-oriented SOC analyst with experience across Azure Sentinel, Splunk, CrowdStrike and incident response frameworks. Proven track record lowering MTTD, handling high-volume alerts, and providing evidence-backed remediation. Strong communicator with customer-facing retail & membership security background.</p>
 
-    <h2>Experience</h2>
-    <p><strong>Costco Wholesale – Front End Supervisor</strong> (2025–Present)</p>
-    <ul>
-      <li>Led front-end operations ensuring smooth membership and sales processes.</li>
-      <li>Delegated tasks effectively to maintain customer satisfaction and team productivity.</li>
-      <li>Trained and mentored new employees for operational excellence.</li>
-    </ul>
+        <div class="section" id="experience">
+          <h3>Experience</h3>
+          <div class="timeline">
+            <div class="job">
+              <div class="job-title"><strong>Membership Associate — Costco (May 2023 - Present)</strong><span class="muted">Toronto, ON</span></div>
+              <div class="muted">Verified identities for 100+ weekly membership requests • Investigated 50+ account incidents weekly • Processed sensitive financial data (PCI-compliant)</div>
+              <ul class="bullets">
+                <li>Analyzed suspicious communications, escalated phishing incidents, and logged cases in ServiceNow.</li>
+                <li>Maintained confidentiality in handling credit applications and fraud investigations.</li>
+              </ul>
+            </div>
 
-    <p><strong>Humber College – Student Ambassador</strong> (2023–2024)</p>
-    <ul>
-      <li>Supported campus events and assisted new students with onboarding.</li>
-      <li>Developed communication and leadership skills through public engagement.</li>
-    </ul>
+            <div class="job">
+              <div class="job-title"><strong>Student Ambassador — Humber College (Jan 2023 - Apr 2024)</strong><span class="muted">Toronto, ON</span></div>
+              <div class="muted">Coordinated tech labs and supported 200+ students weekly; event logistics & troubleshooting.</div>
+            </div>
 
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Credit Buddy</strong> – Java + Spring Boot app that offers expert credit-improvement insights.</li>
-      <li><strong>SkillBridge</strong> – Java-based web app that bridges skill gaps through curated learning paths.</li>
-    </ul>
+            <div class="job">
+              <div class="job-title"><strong>SOC Analyst — Goyal Infotech Solutions (Aug 2021 - Aug 2022)</strong><span class="muted">Jalandhar, IN</span></div>
+              <div class="muted">Handled Sentinel & Splunk triage, endpoint telemetry and incident documentation.</div>
+              <ul class="bullets">
+                <li>Triaged 25+ high-priority alerts per day across Azure Sentinel and endpoint logs.</li>
+                <li>Investigated 15–20 monthly security incidents, recommending remediation steps and containment.</li>
+                <li>Optimized correlation logic to reduce MTTD by ~18%.</li>
+              </ul>
+            </div>
 
-    <h2>Skills</h2>
-    <div class="skills">
-      <span>Java</span>
-      <span>Spring Boot</span>
-      <span>HTML/CSS</span>
-      <span>MySQL</span>
-      <span>Leadership</span>
-      <span>Team Management</span>
-      <span>Communication</span>
+            <div class="job">
+              <div class="job-title"><strong>SOC Analyst Tier 1 (Apprentice) — Goyal Infotech (Feb 2021 - Jul 2021)</strong><span class="muted">Jalandhar, IN</span></div>
+              <div class="muted">Focused on dashboard monitoring, false-positive reduction, and documentation for knowledge transfer.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" id="education">
+          <h3>Education & Certifications</h3>
+          <div style="margin-top:8px;color:var(--muted)">
+            <strong>Postgraduate Diploma — Information Technology Solutions</strong>, Humber College<br>
+            <strong>Bachelor’s Degree — Computer Applications & Cyber Security</strong>, Lovely Professional University<br>
+            <div style="margin-top:6px">Certifications: CompTIA Security+ (Oct 2025) · Microsoft Cybersecurity Analyst · Intro to Networking & Cloud (Microsoft)</div>
+          </div>
+        </div>
+
+        <div class="section" id="skills">
+          <h3>Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-pill">Azure Sentinel (KQL)</div>
+            <div class="skill-pill">Splunk SIEM</div>
+            <div class="skill-pill">CrowdStrike Falcon</div>
+            <div class="skill-pill">Wireshark · VirusTotal</div>
+            <div class="skill-pill">ServiceNow</div>
+            <div class="skill-pill">KQL · Python · PowerShell · SQL</div>
+            <div class="skill-pill">MITRE ATT&CK · NIST-CSF · Kill Chain</div>
+            <div class="skill-pill">TCP/IP · DNS · VPN · Firewalls</div>
+            <div class="skill-pill">Communication · Teamwork · Problem Solving</div>
+          </div>
+        </div>
+
+        <div class="section" id="projects">
+          <h3>Selected Project Highlights</h3>
+          <ul class="bullets">
+            <li><strong>Alert Triage Optimization</strong> — Tuned Sentinel correlation rules and playbooks; reduced noise and improved analyst throughput.</li>
+            <li><strong>Phishing Playbook</strong> — Built documented investigation steps used across support teams; included email header analysis, URL reputation checks and containment actions.</li>
+            <li><strong>Student Lab Automation</strong> — Automated lab provisioning/permissions workflows for Humber College lab sessions.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <aside class="panel" id="rightColumn">
+        <div>
+          <h3>At-a-Glance Metrics</h3>
+          <div class="metrics" style="margin-top:10px">
+            <div class="metric"><div class="num">100+</div><div class="muted">Weekly identity verifications</div></div>
+            <div class="metric"><div class="num">50+</div><div class="muted">Account incidents/week</div></div>
+            <div class="metric"><div class="num">18%</div><div class="muted">MTTD improvement</div></div>
+          </div>
+
+          <div class="section" style="margin-top:12px">
+            <h3>Technical Stack</h3>
+            <div class="tech-list">
+              <div>Microsoft Sentinel</div>
+              <div>Splunk</div>
+              <div>CrowdStrike</div>
+              <div>Wireshark</div>
+              <div>EDR &amp; AV</div>
+              <div>ServiceNow</div>
+            </div>
+
+            <div style="margin-top:12px">
+              <div class="muted">Skill intensity</div>
+              <div style="margin-top:8px">
+                <div class="skillbar" data-pct="90"><i></i></div>
+                <div style="height:8px"></div>
+                <div class="skillbar" data-pct="80"><i></i></div>
+                <div style="height:8px"></div>
+                <div class="skillbar" data-pct="70"><i></i></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>Contact & Next Steps</h3>
+            <div class="muted">Ready for interviews — open to SOC / Tier-1/2 roles & entry-level IR positions. Available for hybrid roles in GTA.</div>
+            <div class="cta">
+              <a class="btn" href="mailto:anshbhardwaj0202@gmail.com">Email</a>
+              <a class="btn alt" href="https://linkedin.com/in/anshcyber" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="section" style="margin-top:12px">
+            <h3>Honors & Awards</h3>
+            <div class="muted">Performance Recognition — Costco (customer service & secure tech support)</div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Why You Should Interview Me -->
+    <div class="panel" style="margin-top:20px; padding:18px; border-left:4px solid var(--accent); background:rgba(96,165,250,0.06);">
+      <h3 style="margin:0 0 10px 0; color:#cfe8f0; font-size:14px;">Why You Should Interview Me</h3>
+      <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.45; font-size:13px;">
+        <li><strong style="color:#6ee7b7">Evidence-driven:</strong> I bring verifiable SIEM queries, playbooks, and triage artifacts — not generic claims.</li>
+        <li><strong style="color:#6ee7b7">Immediate impact:</strong> Proven ability to reduce noise, optimize detection logic, and improve SOC efficiency from day one.</li>
+        <li><strong style="color:#6ee7b7">High-volume stability:</strong> Comfortable handling 25+ high-priority alerts/day without dropping quality.</li>
+        <li><strong style="color:#6ee7b7">Cross-functional clarity:</strong> I translate technical incidents into simple business narratives leaders can act on.</li>
+        <li><strong style="color:#6ee7b7">Hybrid strength:</strong> Retail security experience at Costco gives me customer empathy + fraud detection instincts.</li>
+      </ul>
     </div>
 
-    <h2>Education</h2>
-    <p><strong>Diploma in Information Technology</strong> – Humber College, Toronto</p>
+    
+
+    
 
   </div>
+
+  <!-- Footer Copyright -->
+  <div style="text-align:center; margin-top:30px; color:var(--muted); font-size:12px;">
+    © 2025 Ansh Bhardwaj | Cyber Security Portfolio
+  </div>
+
+<script>
+    // Skill bars animation
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.querySelectorAll('.skillbar').forEach(bar=>{
+        const pct = bar.getAttribute('data-pct') || 60;
+        setTimeout(()=>{ bar.querySelector('i').style.width = pct + '%'; }, 200);
+      });
+
+      // Toggle view: HR vs Technical
+      const toggle = document.getElementById('viewToggle');
+      let techMode = false;
+      toggle.addEventListener('click', ()=>{
+        techMode = !techMode;
+        toggle.textContent = techMode ? 'Talent View' : 'Technical View';
+        applyView(techMode);
+      });
+
+      function applyView(techMode){
+        const summary = document.querySelector('.summary');
+        const skills = document.getElementById('skills');
+        const metrics = document.querySelector('footer');
+        if(techMode){
+          summary.textContent = 'Technical deep-dive enabled: SIEM rule tuning, endpoint telemetry parsing, KQL & Splunk SPL samples available on request. Emphasis on automation and playbook authoring.';
+          skills.style.display = 'block';
+          document.querySelectorAll('.skill-pill').forEach(p=>p.style.opacity=1);
+        } else {
+          summary.textContent = 'Performance-oriented SOC analyst with experience across Azure Sentinel, Splunk, CrowdStrike and incident response frameworks. Proven track record lowering MTTD, handling high-volume alerts, and providing evidence-backed remediation. Strong communicator with customer-facing retail & membership security background.';
+          skills.style.display = 'block';
+        }
+      }
+
+    });
+
+    function printResume(){
+      window.print();
+    }
+  </script>
+
+  <style media="print">
+    body{background:white;color:#000}
+    .container{box-shadow:none;border:0;background:transparent}
+    .avatar{background:#000;color:#fff}
+    .btn, .actions, #viewToggle{display:none}
+  </style>
 </body>
 </html>
