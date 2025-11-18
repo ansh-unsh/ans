@@ -60,7 +60,34 @@ ul.bullets li::before{content:"";position:absolute;left:0;top:6px;width:10px;hei
     footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
 
     /* responsive */
+    /* snapshot strip */
+    .snapshot{margin-top:16px;display:flex;justify-content:space-between;padding:14px 18px;border-left:4px solid var(--accent);background:rgba(110,231,183,0.04);align-items:center;gap:12px}
+    .snapshot .label{font-weight:700;color:var(--accent);font-size:14px}
+    .snapshot .items{display:flex;gap:14px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:13px}
+    .snapshot .item{display:flex;flex-direction:column;min-width:120px}
+    .snapshot .item strong{color:var(--accent);font-size:13px}
+
     @media (max-width:920px){main{grid-template-columns:1fr} .actions{display:none}}
+
+/* mobile optimization */
+@media (max-width:600px){
+  .container{padding:16px;margin:12px}
+  header{flex-direction:column;align-items:flex-start;gap:12px}
+  h1{font-size:18px}
+  .avatar{width:72px;height:72px;font-size:20px}
+  .panel{padding:14px}
+  .headline{font-size:14px}
+  .summary{font-size:13px}
+  .job-title{flex-direction:column;align-items:flex-start;gap:4px}
+  .timeline{padding-left:12px}
+  .job::before{left:-8px;top:14px;width:8px;height:8px}
+  .skills-grid{gap:6px}
+  .skill-pill{padding:6px 8px;font-size:12px}
+  .metrics{gap:6px}
+  .metric{flex:1 1 100%;padding:8px}
+  .panel[style*="15-Second"]{flex-direction:column!important;gap:10px}
+  .panel[style*="15-Second"] div:last-child{flex-wrap:wrap;gap:10px}
+}
 
     /* small helpers */
     .tag{background:rgba(96,165,250,0.08);color:var(--accent-2);padding:4px 8px;border-radius:999px;font-weight:700;font-size:12px}
@@ -72,7 +99,7 @@ ul.bullets li::before{content:"";position:absolute;left:0;top:6px;width:10px;hei
     <header>
       <div class="avatar">AB</div>
       <div>
-        <h1 id="pageTitle">Ansh Bhardwaj <span class="tag">Cybersecurity Analyst</span> <span style="margin-left:8px" class="badge">Professional Profile</span></h1>
+        <h1 id="pageTitle">Ansh Bhardwaj<br><span class="tag">Cybersecurity Analyst</span><br><span style="margin-top:4px; display:inline-block; font-size:12px; color:var(--muted);">Security Operations Analyst · IR Analyst · Threat Detection · SIEM Analyst</span></h1>
         <div class="sub">Toronto, ON · (437) 989-9950 · <a href="mailto:anshbhardwaj0202@gmail.com" style="color:inherit;text-decoration:underline">anshbhardwaj0202@gmail.com</a> · <a href="https://linkedin.com/in/anshcyber" target="_blank" style="color:inherit;text-decoration:underline">linkedin.com/in/anshcyber</a></div>
         <div class="sub">Public certifications: CompTIA Security+ · Microsoft Cybersecurity Analyst · Networking & Cloud</div>
       </div>
@@ -83,14 +110,14 @@ ul.bullets li::before{content:"";position:absolute;left:0;top:6px;width:10px;hei
     </header>
 
     <!-- 15-Second HR Scan Strip -->
-    <div class="panel" style="margin-top:16px; display:flex; justify-content:space-between; padding:14px 18px; border-left:4px solid var(--accent); background:rgba(110,231,183,0.04);">
-      <div><strong style="color:#6ee7b7; font-size:14px;">Key Snapshot:</strong></div>
-      <div style="display:flex; gap:20px; font-size:13px; color:var(--muted);">
-        <span><strong style="color:#6ee7b7">3+ yrs</strong> SOC Experience</span>
-        <span><strong style="color:#6ee7b7">MTTD ↓ 18%</strong> optimization</span>
-        <span><strong style="color:#6ee7b7">High-volume</strong> alert triage (25+/day)</span>
-        <span><strong style="color:#6ee7b7">Security+</strong> certified</span>
-        <span><strong style="color:#6ee7b7">Azure Sentinel</strong> + Splunk</span>
+    <div class="snapshot panel" aria-label="Key snapshot for quick review">
+      <div class="label">Key Snapshot</div>
+      <div class="items">
+        <div class="item"><strong>3+ yrs</strong><span>SOC experience</span></div>
+        <div class="item"><strong>MTTD ↓18%</strong><span>Optimization</span></div>
+        <div class="item"><strong>25+/day</strong><span>High-volume triage</span></div>
+        <div class="item"><strong>Security+</strong><span>Certification</span></div>
+        <div class="item"><strong>Sentinel + Splunk</strong><span>Primary SIEMs</span></div>
       </div>
     </div>
 
@@ -223,11 +250,11 @@ ul.bullets li::before{content:"";position:absolute;left:0;top:6px;width:10px;hei
     <div class="panel" style="margin-top:20px; padding:18px; border-left:4px solid var(--accent); background:rgba(96,165,250,0.06);">
       <h3 style="margin:0 0 10px 0; color:#cfe8f0; font-size:14px;">Why You Should Interview Me</h3>
       <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.45; font-size:13px;">
-        <li><strong style="color:#6ee7b7">Evidence-driven:</strong> I bring verifiable SIEM queries, playbooks, and triage artifacts — not generic claims.</li>
-        <li><strong style="color:#6ee7b7">Immediate impact:</strong> Proven ability to reduce noise, optimize detection logic, and improve SOC efficiency from day one.</li>
-        <li><strong style="color:#6ee7b7">High-volume stability:</strong> Comfortable handling 25+ high-priority alerts/day without dropping quality.</li>
-        <li><strong style="color:#6ee7b7">Cross-functional clarity:</strong> I translate technical incidents into simple business narratives leaders can act on.</li>
-        <li><strong style="color:#6ee7b7">Hybrid strength:</strong> Retail security experience at Costco gives me customer empathy + fraud detection instincts.</li>
+        <li><strong style="color:#6ee7b7">Clear analytical judgment:</strong> I break down complex alerts into actionable steps, ensuring investigations move quickly and decisively.</li>
+        <li><strong style="color:#6ee7b7">Calm under pressure:</strong> I stay steady during high‑volume spikes and maintain accuracy even when multiple incidents demand attention.</li>
+        <li><strong style="color:#6ee7b7">Strong communication instincts:</strong> I explain technical findings in a way that non‑technical teams and leaders can immediately understand and act upon.</li>
+        <li><strong style="color:#6ee7b7">Operational discipline:</strong> I document clearly, follow procedures, and maintain the consistency that SOC environments depend on.</li>
+        <li><strong style="color:#6ee7b7">Real‑world situational awareness:</strong> My hands‑on experience at Costco sharpened my ability to spot irregular behavior, understand user patterns, and identify early signs of misuse or fraud.</li>
       </ul>
     </div>
 
@@ -264,7 +291,7 @@ ul.bullets li::before{content:"";position:absolute;left:0;top:6px;width:10px;hei
         const skills = document.getElementById('skills');
         const metrics = document.querySelector('footer');
         if(techMode){
-          summary.textContent = 'Technical deep-dive enabled: SIEM rule tuning, endpoint telemetry parsing, KQL & Splunk SPL samples available on request. Emphasis on automation and playbook authoring.';
+          summary.textContent = 'I approach alerts with steady, structured judgment — focusing on credible signals, prioritizing what matters, and communicating clearly so teams can act with confidence and no confusion.';
           skills.style.display = 'block';
           document.querySelectorAll('.skill-pill').forEach(p=>p.style.opacity=1);
         } else {
