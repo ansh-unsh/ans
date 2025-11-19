@@ -8,90 +8,102 @@
   <style>
     :root{
       --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#6ee7b7; --accent-2:#60a5fa; --glass: rgba(255,255,255,0.04);
-      --glass-2: rgba(255,255,255,0.02);
-      --glass-border: rgba(255,255,255,0.06);
-      font-family: Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+      --glass-2: rgba(255,255,255,0.02); --glass-border: rgba(255,255,255,0.06);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071123 0%, #071727 60%);color:#e6eef6}
-    .container{max-width:980px;margin:36px auto;padding:28px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 30px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.03);}
-    header{display:flex;gap:20px;align-items:center}
-    .avatar{width:96px;height:96px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#042029;font-size:26px}
-    h1{margin:0;font-size:22px;letter-spacing:0.6px}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071123 0%, #071727 60%);color:#e6eef6;font-size:16px;line-height:1.5}
+
+    /* page container */
+    .container{max-width:920px;margin:28px auto;padding:26px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 30px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.03)}
+
+    /* header */
+    header{display:flex;gap:18px;align-items:center}
+    .avatar{width:88px;height:88px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#042029;font-size:28px;flex:0 0 auto}
+    h1{margin:0;font-size:20px;letter-spacing:0.2px;color:#eaf7ef}
+    h1 .tag{font-size:13px}
     .sub{color:var(--muted);font-size:13px;margin-top:6px}
-    .actions{margin-left:auto;display:flex;gap:10px}
-    .btn{background:var(--glass);border:1px solid var(--glass-border);color:var(--accent);padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer}
-    .btn.alt{background:transparent;color:var(--accent-2);border:1px solid rgba(96,165,250,0.14)}
 
-    main{display:grid;grid-template-columns:1fr 360px;gap:22px;margin-top:22px}
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid var(--glass-border)}
+    /* actions moved under snapshot; keep space reserved */
+    .actions{display:flex;gap:10px}
+    .btn{background:var(--glass);border:1px solid var(--glass-border);color:var(--accent);padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+    .btn.alt{background:transparent;color:var(--accent-2);border:1px solid rgba(96,165,250,0.12)}
 
-    /* left content */
-    .hero-title{display:flex;align-items:center;gap:10px}
-    .headline{font-size:16px;color:#bfeadf;font-weight:700}
-    .summary{color:var(--muted);margin-top:10px;line-height:1.5}
+    /* main layout */
+    main{display:grid;grid-template-columns:1fr 350px;gap:22px;margin-top:18px}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:16px;border-radius:10px;border:1px solid var(--glass-border)}
 
+    /* typography */
+    .headline{font-size:15px;color:#bfeadf;font-weight:700}
+    .summary{color:var(--muted);margin-top:8px;line-height:1.55;font-size:15px}
     .section{margin-top:16px}
     .section h3{margin:0;font-size:13px;color:#cfe8f0}
 
-    .skills-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .skill-pill{background:var(--glass-2);padding:8px 10px;border-radius:8px;font-size:13px;color:var(--muted);border:1px solid rgba(255,255,255,0.02)}
+    /* skills */
+    .skills-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .skill-pill{background:var(--glass-2);padding:7px 10px;border-radius:8px;font-size:13px;color:var(--muted);border:1px solid rgba(255,255,255,0.02)}
 
-    .timeline{margin-top:12px;border-left:2px solid rgba(255,255,255,0.03);padding-left:16px}
+    /* experience timeline */
+    .timeline{margin-top:12px;border-left:2px solid rgba(255,255,255,0.03);padding-left:18px}
     .job{position:relative;padding:12px 0}
-    .job::before{content:"";position:absolute;left:-10px;top:16px;width:10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 0 4px rgba(96,165,250,0.5);}
-    .job-title{display:flex;justify-content:space-between;align-items:center}
-    .job-title strong{font-size:14px}
+    .job::before{content:"";position:absolute;left:-14px;top:8px;width:10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--accent-2),var(--accent));box-shadow:0 0 4px rgba(96,165,250,0.5)}
+    .job-title{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .job-title strong{font-size:15px;line-height:1.2}
     .muted{color:var(--muted);font-size:13px}
-    ul.bullets{margin:8px 0 0 18px;padding:0;color:var(--muted);line-height:1.45;list-style:none}
-ul.bullets li{position:relative;padding-left:18px;margin-bottom:6px}
-ul.bullets li::before{content:"";position:absolute;left:0;top:6px;width:10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 0 6px rgba(110,231,183,0.6)}
+
+    /* custom bullets */
+    ul.bullets{margin:8px 0 0 18px;padding:0;color:var(--muted);line-height:1.5;list-style:none}
+    ul.bullets li{position:relative;padding-left:20px;margin-bottom:8px;font-size:14px}
+    ul.bullets li::before{content:"";position:absolute;left:0;top:6px;width:10px;height:10px;border-radius:3px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 0 6px rgba(110,231,183,0.6)}
 
     /* right column */
     .metrics{display:flex;gap:10px;flex-wrap:wrap}
-    .metric{flex:1 1 100px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:10px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.02)}
-    .metric .num{font-size:20px;color:var(--accent);font-weight:700}
+    .metric{flex:1 1 110px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:12px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.02)}
+    .metric .num{font-size:18px;color:var(--accent);font-weight:800}
     .tech-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
-    .skillbar{background:rgba(255,255,255,0.03);height:9px;border-radius:8px;overflow:hidden}
-    .skillbar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:width 1s ease}
 
-    .cta{margin-top:14px;display:flex;gap:8px}
+    .skillbar{background:rgba(255,255,255,0.03);height:10px;border-radius:8px;overflow:hidden}
+    .skillbar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:width 900ms cubic-bezier(.2,.8,.2,1)}
 
-    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+    .cta{margin-top:12px;display:flex;gap:8px}
 
-    /* responsive */
     /* snapshot strip */
-    .snapshot{margin-top:16px;display:flex;justify-content:space-between;padding:14px 18px;border-left:4px solid var(--accent);background:rgba(110,231,183,0.04);align-items:center;gap:12px}
+    .snapshot{margin-top:16px;display:flex;justify-content:space-between;padding:12px 16px;border-left:4px solid var(--accent);background:rgba(110,231,183,0.04);align-items:center;gap:12px}
     .snapshot .label{font-weight:700;color:var(--accent);font-size:14px}
-    .snapshot .items{display:flex;gap:14px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:13px}
-    .snapshot .item{display:flex;flex-direction:column;min-width:120px}
+    .snapshot .items{display:flex;gap:12px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:13px}
+    .snapshot .item{display:flex;flex-direction:column;min-width:110px}
     .snapshot .item strong{color:var(--accent);font-size:13px}
 
-    @media (max-width:920px){main{grid-template-columns:1fr} .actions{display:none}}
-
-/* mobile optimization */
-@media (max-width:600px){
-  .container{padding:16px;margin:12px}
-  header{flex-direction:column;align-items:flex-start;gap:12px}
-  h1{font-size:18px}
-  .avatar{width:72px;height:72px;font-size:20px}
-  .panel{padding:14px}
-  .headline{font-size:14px}
-  .summary{font-size:13px}
-  .job-title{flex-direction:column;align-items:flex-start;gap:4px}
-  .timeline{padding-left:12px}
-  .job::before{left:-8px;top:14px;width:8px;height:8px}
-  .skills-grid{gap:6px}
-  .skill-pill{padding:6px 8px;font-size:12px}
-  .metrics{gap:6px}
-  .metric{flex:1 1 100%;padding:8px}
-  .panel[style*="15-Second"]{flex-direction:column!important;gap:10px}
-  .panel[style*="15-Second"] div:last-child{flex-wrap:wrap;gap:10px}
-}
-
-    /* small helpers */
+    /* helpers */
     .tag{background:rgba(96,165,250,0.08);color:var(--accent-2);padding:4px 8px;border-radius:999px;font-weight:700;font-size:12px}
-    .switch{display:inline-flex;gap:8px;align-items:center}
+    .copy{background:transparent;border:1px dashed rgba(255,255,255,0.04);color:var(--muted);padding:6px 8px;border-radius:8px;cursor:pointer}
+
+    /* responsive */
+    @media (max-width:920px){main{grid-template-columns:1fr} .actions{display:flex;margin-top:8px;gap:8px;flex-wrap:wrap}}
+
+    @media (max-width:600px){
+      .container{padding:16px;margin:12px}
+      header{flex-direction:column;align-items:flex-start;gap:12px}
+      h1{font-size:18px}
+      .avatar{width:64px;height:64px;font-size:20px}
+      main{grid-template-columns:1fr}
+      .panel{padding:12px}
+      .headline{font-size:14px}
+      .summary{font-size:14px}
+      .job-title{flex-direction:column;align-items:flex-start;gap:6px}
+      .timeline{padding-left:12px}
+      .job::before{left:-12px;top:10px;width:9px;height:9px}
+      .skills-grid{gap:6px}
+      .skill-pill{padding:6px 8px;font-size:12px}
+      .metrics{gap:8px}
+      .metric{flex:1 1 100%;padding:10px}
+      .snapshot .item{min-width:100px}
+      .actions{width:100%;justify-content:flex-start}
+      .actions .btn{font-size:14px;padding:8px 10px}
+    }
+
+    /* print rules kept minimal and clean */
+    @media print{body{background:white;color:#000} .container{box-shadow:none;border:0;background:transparent} .avatar{background:#000;color:#fff} .btn, .actions, #viewToggle{display:none}}
   </style>
 </head>
 <body>
@@ -103,19 +115,23 @@ ul.bullets li::before{content:"";position:absolute;left:0;top:6px;width:10px;hei
         <div class="sub">Toronto, ON · (437) 989-9950 · <a href="mailto:anshbhardwaj0202@gmail.com" style="color:inherit;text-decoration:underline">anshbhardwaj0202@gmail.com</a> · <a href="https://linkedin.com/in/anshcyber" target="_blank" style="color:inherit;text-decoration:underline">linkedin.com/in/anshcyber</a></div>
         <div class="sub">Public certifications: CompTIA Security+ · Microsoft Cybersecurity Analyst · Networking & Cloud</div>
       </div>
-      <div class="actions">
-        <a class="btn" style="text-decoration:none" href="https://drive.google.com/file/d/1aldkmaseNfRUl_RSQUwxEmVC3qHg1_K4/view?usp=sharing" target="_blank">Print / Save PDF</a>
-        <button class="btn alt" id="viewToggle">Technical View</button>
-      </div>
+      
     </header>
 
     <!-- 15-Second HR Scan Strip -->
+
+    <!-- Moved Actions for Cleaner Layout -->
+    <div class="actions" style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-start;">
+      <a class="btn" style="text-decoration:none" href="https://drive.google.com/file/d/1aldkmaseNfRUl_RSQUwxEmVC3qHg1_K4/view?usp=sharing" target="_blank">PDF Version</a>
+      <button class="btn alt" id="viewToggle">Technical View</button>
+    </div>
+
     <div class="snapshot panel" aria-label="Key snapshot for quick review">
       <div class="label">Key Snapshot</div>
       <div class="items">
-        <div class="item"><strong>3+ yrs</strong><span>SOC experience</span></div>
-        <div class="item"><strong>MTTD ↓18%</strong><span>Optimization</span></div>
-        <div class="item"><strong>25+/day</strong><span>High-volume triage</span></div>
+        <div class="item"><strong>2+ yrs</strong><span>SOC experience</span></div>
+        
+        <div class="item"><strong>Microsoft Azure</strong><span>Cloud & Security</span></div>
         <div class="item"><strong>Security+</strong><span>Certification</span></div>
         <div class="item"><strong>Sentinel + Splunk</strong><span>Primary SIEMs</span></div>
       </div>
